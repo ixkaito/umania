@@ -1,0 +1,12 @@
+@charset "UTF-8";
+@import "compass";
+
+@mixin font-size($size: 12, $base: 10){
+	font-size: $size + px;
+	font-size: ($size / $base) + rem;
+}
+
+@mixin line-height($size: 12, $base: 10){
+	line-height: $size + px;
+	line-height: ($size / $base) + rem;
+}
