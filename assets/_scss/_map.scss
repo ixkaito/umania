@@ -1,9 +1,9 @@
 #map>path.country {
-  fill: white;
-  stroke: white;
+  fill: $gray_40;
+  stroke: $gray_40;
 }
 #map>rect.background {
-  fill: lightblue;
+  fill: $gray_80;
 }
 #map>circle.cryptids {
   opacity: 0.3;

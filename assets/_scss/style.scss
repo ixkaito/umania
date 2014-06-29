@@ -43,11 +43,24 @@
 	content: "\e601";
 }
 
+html{
+	height: 100%
+}
+
+body{
+	height: 100%;
+	background: $gray_80;
+}
+
 #container{
-	background: #333;
+	position: relative;
+	background: $gray_80;
 
-	.container-inner{
-
+	.containerInner{
+		position: relative;
+		width: 480px;
+		min-height: 854px;
+		margin: 0 auto;
 	}
 }
 
@@ -55,12 +68,49 @@ a{
 	color: inherit;
 }
 
+#header{
+	padding: 20px 0;
+	text-align: center;
+}
+
 #footer{
+	position: absolute;
+	border-top: 4px solid $gray_40;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 
 	#nav{
 
 		a{
-			color: #fff;
+			display: block;
+			color: $gray_40;
+			@include font-size(40);
+			padding: 0.25em;
+		}
+
+		ul{
+			text-align: center;
+
+			li{
+				display: inline-block;
+				width: 30%;
+			}
 		}
 	}
+}
+
+#start{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 9999;
+	margin-left: -240px;
+}
+
+#map{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -300px;
 }

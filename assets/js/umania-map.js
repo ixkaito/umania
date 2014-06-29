@@ -33,7 +33,7 @@ d3.json('map.json', function(data) {
   d3.select('#map')
     .call(drawMap({
       geo: topojson.feature(data, data.objects.countries),
-      width: 600,
+      width: 480,
       height: 500
     }));
 });
