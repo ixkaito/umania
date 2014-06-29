@@ -2,49 +2,77 @@ var AQUATIC = '水棲';
 var ANTHROPOID = '人間・類人猿';
 var MAMMALS = '哺乳類';
 var REPTILES = '爬虫類';
+//
+//var cryptids = [
+//  {
+//    name: 'ビッグフット',
+//    lat: 51,
+//    lon: -107,
+//    popularity: 10,
+//    category: ANTHROPOID
+//  },
+//  {
+//    name: '河童',
+//    lat: 35,
+//    lon: 135,
+//    popularity: 5,
+//    category: AQUATIC
+//  },
+//  {
+//    name: 'ジャージーデビル',
+//    lat: 40,
+//    lon: -74,
+//    popularity: 1,
+//    category: '哺乳類'
+//  },
+//  {
+//    name: 'タッツェルブルム',
+//    lat: 46,
+//    lon: 10,
+//    popularity: 3,
+//    category: '爬虫類'
+//  }
+//];
+//
 
-var cryptids = [
-  {
-    name: 'ビッグフット',
-    lat: 51,
-    lon: -107,
-    popularity: 10,
-    category: ANTHROPOID
-  },
-  {
-    name: '河童',
-    lat: 35,
-    lon: 135,
-    popularity: 5,
-    category: AQUATIC
-  },
-  {
-    name: 'ジャージーデビル',
-    lat: 40,
-    lon: -74,
-    popularity: 1,
-    category: '哺乳類'
-  },
-  {
-    name: 'タッツェルブルム',
-    lat: 46,
-    lon: 10,
-    popularity: 3,
-    category: '爬虫類'
+function gencat() {
+  var v = Math.random();
+  if (v < 0.25) {
+    return AQUATIC;
+  } else if (v < 0.5) {
+    return ANTHROPOID;
+  } else if (v < 0.75) {
+    return MAMMALS;
+  } else {
+    return REPTILES;
   }
-];
+}
 
-d3.json('map.json', function(data) {
-  d3.select('#map')
-    .call(drawMap({
-      geo: topojson.feature(data, data.objects.countries),
-      width: 480,
-      height: 500
-    }));
+function convert(d) {
+  console.log(d);
+  return {
+    lat: +d.lat,
+    lon: +d.lon,
+    category: gencat(),
+    popularity: Math.random()
+  };
+}
+
+d3.csv('cryptids.csv', convert, function(cryptids) {
+  d3.json('map.json', function(data) {
+    d3.select('#map')
+      .call(drawMap({
+        cryptids: cryptids,
+        geo: topojson.feature(data, data.objects.countries),
+        width: 480,
+        height: 500
+      }));
+  });
 });
 
 
 function drawMap(options) {
+  var cryptids = options.cryptids;
   var geo = options.geo;
   var width = options.width;
   var height = options.height;
