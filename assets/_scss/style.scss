@@ -114,3 +114,27 @@ a{
 	top: 50%;
 	margin-top: -300px;
 }
+
+#uma{
+	margin-top: 100px;
+	text-align: center;
+}
+
+#collection{
+
+	margin-top: 50px;
+
+	ul{
+
+		li{
+
+			float: left;
+			width: 25%;
+
+			img{
+				max-width: 100%
+			}
+
+		}
+	}
+}
