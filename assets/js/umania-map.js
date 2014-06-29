@@ -1,17 +1,22 @@
+var AQUATIC = '水棲';
+var ANTHROPOID = '人間・類人猿';
+var MAMMALS = '哺乳類';
+var REPTILES = '爬虫類';
+
 var cryptids = [
   {
     name: 'ビッグフット',
     lat: 51,
     lon: -107,
     popularity: 10,
-    category: '人間・類人猿'
+    category: ANTHROPOID
   },
   {
     name: '河童',
     lat: 35,
     lon: 135,
     popularity: 5,
-    category: '水棲'
+    category: AQUATIC
   },
   {
     name: 'ジャージーデビル',
@@ -86,7 +91,21 @@ function drawMap(options) {
       .data(cryptids)
       .enter()
       .append('circle')
-      .classed('cryptids', true)
+      .classed({
+        cryptids: true,
+        aquatic: function(d) {
+          return d.category.indexOf(AQUATIC) >= 0;
+        },
+        anthropoid: function(d) {
+          return d.category.indexOf(ANTHROPOID) >= 0;
+        },
+        mammals: function(d) {
+          return d.category.indexOf(MAMMALS) >= 0;
+        },
+        reptiles: function(d) {
+          return d.category.indexOf(REPTILES) >= 0;
+        }
+      })
       .attr({
         cx: function(d) {
           return mercator([d.lon, d.lat])[0];
