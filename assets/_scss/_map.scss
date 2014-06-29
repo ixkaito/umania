@@ -1,26 +1,26 @@
-#map>path.country {
+#map path.country {
   fill: $gray_40;
   stroke: $gray_40;
 }
-#map>rect.background {
+#map rect.background {
   fill: $gray_80;
 }
-#map>circle.cryptids {
+#map circle.cryptids {
   opacity: 0.3;
 }
 // 水棲
-#map>circle.cryptids.aquatic {
+#map circle.cryptids.aquatic {
   fill: blue;
 }
 // 類人猿
-#map>circle.cryptids.anthropoid {
+#map circle.cryptids.anthropoid {
   fill: yellow;
 }
 // 哺乳類
-#map>circle.cryptids.mammals {
+#map circle.cryptids.mammals {
   fill: red;
 }
 // 爬虫類
-#map>circle.cryptids.reptiles {
+#map circle.cryptids.reptiles {
   fill: green;
 }

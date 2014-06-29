@@ -2,38 +2,6 @@ var AQUATIC = '水棲';
 var ANTHROPOID = '人間・類人猿';
 var MAMMALS = '哺乳類';
 var REPTILES = '爬虫類';
-//
-//var cryptids = [
-//  {
-//    name: 'ビッグフット',
-//    lat: 51,
-//    lon: -107,
-//    popularity: 10,
-//    category: ANTHROPOID
-//  },
-//  {
-//    name: '河童',
-//    lat: 35,
-//    lon: 135,
-//    popularity: 5,
-//    category: AQUATIC
-//  },
-//  {
-//    name: 'ジャージーデビル',
-//    lat: 40,
-//    lon: -74,
-//    popularity: 1,
-//    category: '哺乳類'
-//  },
-//  {
-//    name: 'タッツェルブルム',
-//    lat: 46,
-//    lon: 10,
-//    popularity: 3,
-//    category: '爬虫類'
-//  }
-//];
-//
 
 function gencat() {
   var v = Math.random();
@@ -64,7 +32,7 @@ d3.csv('cryptids.csv', convert, function(cryptids) {
         cryptids: cryptids,
         geo: topojson.feature(data, data.objects.countries),
         width: 480,
-        height: 500
+        height: 480
       }));
   });
 });
@@ -77,9 +45,7 @@ function drawMap(options) {
   var height = options.height;
   var mercator = d3.geo.mercator()
     .rotate([225, 0, 0])
-    .center([0, 0])
-    .translate([width / 2, height / 2])
-    .scale(100)
+    .translate([472, 472])
     ;
   var path = d3.geo.path()
     .projection(mercator);
@@ -88,6 +54,8 @@ function drawMap(options) {
       return d.popularity;
     }))
     .range([10, 40]);
+  var scaleX = width / 944;
+  var scaleY = height / 944;
 
   return function(svg) {
     svg
@@ -95,8 +63,6 @@ function drawMap(options) {
         width: width,
         height: height
       });
-
-    // draw map
     svg
       .append('rect')
       .classed('background', true)
@@ -104,7 +70,12 @@ function drawMap(options) {
         width: width,
         height: height
       });
-    svg
+    var contents = svg.append('g')
+      .classed('contents', true)
+      .attr('transform', 'scale(' + scaleX + ',' + scaleY + ')');
+
+    // draw map
+    contents
       .selectAll('path.country')
       .data(geo.features)
       .enter()
@@ -113,7 +84,7 @@ function drawMap(options) {
       .attr('d', path);
 
     // draw cryptids
-    svg
+    contents
       .selectAll('circle.cryptids')
       .data(cryptids)
       .enter()
