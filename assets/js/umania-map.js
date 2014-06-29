@@ -49,7 +49,6 @@ function gencat() {
 }
 
 function convert(d) {
-  console.log(d);
   return {
     lat: +d.lat,
     lon: +d.lon,
