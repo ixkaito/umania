@@ -31,8 +31,8 @@ d3.csv('cryptids.csv', convert, function(cryptids) {
       .call(drawMap({
         cryptids: cryptids,
         geo: topojson.feature(data, data.objects.countries),
-        width: 480,
-        height: 480
+        width: 320,
+        height: 320
       }));
   });
 });

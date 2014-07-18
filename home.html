@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="./assets/css/style.css" />
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript">window.jQuery || document.write('<script src="./assets/js/jquery-1.10.2.min.js"><\/script>')</script>
-	<meta name="viewport" content="width=480, initial-scale=1" />
+	<meta name="viewport" content="width=320, initial-scale=1" />
 </head>
 <body>
 <div id="container">
@@ -19,24 +19,31 @@
 
 <main id="main">
 
-<div id="uma">
-	<p><img src="./assets/images/kappa.png" alt=""></p>
+<div id="mapContainer">
+	<svg id="map"/>
 </div>
 
 </main>
 
 <footer id="footer">
-	<nav id="nav">
-		<ul><!--
-			--><li><a href="./index.html"><i class="icon-home"></i></a></li><!--
-			--><li><a href="./new.html"><i class="icon-new"></i></a></li><!--
-			--><li><a href="./collection.html"><i class="icon-book"></i></a></li>
-		</ul>
-	</nav>
+	<div class="footer-inner">
+		<nav id="nav">
+			<ul><!--
+				--><li class="on"><a href="./home.html"><i class="icon-globe"></i></a></li><!--
+				--><li class="hasNew" data-info-num="2"><a href="./info.html"><i class="icon-bell-circle"></i></a></li><!--
+				--><li><a href="./collection.html"><i class="icon-book-circle"></i></a></li>
+			</ul>
+		</nav>
+	</div>
 </footer>
 
 </div><!-- .containerInner -->
 </div><!-- #container -->
+
+<div id="loading">
+	<img class="loadingImage" src="assets/images/loading.gif" />
+</div>
+
 <script type="text/javascript" src="./assets/js/script.js"></script>
 <script type="text/javascript" src="./assets/js/d3.min.js"></script>
 <script type="text/javascript" src="./assets/js/topojson.js"></script>
