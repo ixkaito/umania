@@ -10,7 +10,7 @@ $(function(){
 	$loading = $('#loading');
 	$(window).on('load', function(){
 		setTimeout(function(){
-			$loading.fadeOut('slow', function() {
+			$loading.fadeOut('normal', function() {
 				// do something awesome here
 			});
 		}, 500);
