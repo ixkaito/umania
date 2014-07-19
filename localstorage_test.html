@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Umania</title>
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<link rel="stylesheet" href="./assets/css/style.css" />
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">window.jQuery || document.write('<script src="./assets/js/jquery-1.10.2.min.js"><\/script>')</script>
+	<meta name="viewport" content="width=480, initial-scale=1" />
+</head>
+<body>
+<div id="container">
+<div class="containerInner">
+
+<header id="header">
+	<p><img src="./assets/images/headerLogo.png" alt=""></p>
+</header>
+
+<main id="main">
+
+<script type="text/javascript">
+// （1）Web Storageの実装確認
+if (typeof sessionStorage === 'undefined') {
+  window.alert("このブラウザはWeb Storage機能が実装されていません");
+} else {
+  window.alert("このブラウザはWeb Storage機能を実装しています");
+
+  var storage = localStorage;
+
+  // （2）sessionStorageへの格納
+  function setsessionStorage() {
+
+    var key = document.getElementById("textkey").value;
+    var value = document.getElementById("textdata").value;
+
+    // 値の入力チェック
+    if (key && value) {
+      storage.setItem(key, value);
+    }
+
+    key = "";
+    value = "";
+
+    viewStorage();
+  }
+
+  // （3）sessionStorageからのデータの取得と表示
+  function viewStorage() {
+
+    var list = document.getElementById("list")
+    while (list.firstChild) list.removeChild(list.firstChild);
+
+    // sessionStorageすべての情報の取得
+    for (var i=0; i < storage.length; i++) {
+      var _key = storage.key(i);
+
+      // sessionStorageのキーと値を表示
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
+      var td2 = document.createElement("td");
+      list.appendChild(tr);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      td1.innerHTML = _key;
+      td2.innerHTML = storage.getItem(_key);
+    }
+  }
+
+  // （4）sessionStorageから削除
+  function removeStorage() {
+    var key = document.getElementById("textkey").value;
+    storage.removeItem(key);
+    key = "";
+    viewStorage();
+  }
+
+  // （5）sessionStorageからすべて削除
+  function removeallStorage() {
+    storage.clear();
+    viewStorage();
+  }
+
+}
+</script>
+</header>
+
+<section id="main">
+  保存するKey：<input id="textkey" type="text" />
+  保存する値：<input id="textdata" type="text" />
+  <button id="button" onclick="setsessionStorage()">保存</button>
+  <button id="button" onclick="removeStorage()">削除</button>
+  <button id="button" onclick="removeallStorage()">全て削除</button>
+  <table border="1">
+    <tr>
+      <th>キー</th><th>値</th>
+    </tr>
+    <tbody id="list">
+    </tbody>
+  </table>
+</section>
+
+<div id="collection">
+	<ul>
+		<li><img src="./assets/images/uma_bigfoot.png" /></li>
+		<li><img src="./assets/images/uma_chupacabra.png" /></li>
+		<li><img src="./assets/images/uma_hitotsumekozo.png" /></li>
+		<li><img src="./assets/images/uma_kappa.png" /></li>
+		<li><img src="./assets/images/uma_kesalanpatharan.png" /></li>
+		<li><img src="./assets/images/uma_mokelembembe.png" /></li>
+		<li><img src="./assets/images/uma_nessie.png" /></li>
+		<li><img src="./assets/images/uma_oni.png" /></li>
+		<li><img src="./assets/images/uma_rokurokubi.png" /></li>
+		<li><img src="./assets/images/uma_tsuchinoko.png" /></li>
+		<li><img src="./assets/images/uma_vampire.png" /></li>
+		<li><img src="./assets/images/uma_werewolf.png" /></li>
+		<li><img src="./assets/images/uma_yeti.png" /></li>
+		<li><img src="./assets/images/uma_yowie.png" /></li>
+	</ul>
+</div>
+
+</main>
+
+<footer id="footer">
+	<div class="footer-inner">
+		<nav id="nav">
+			<ul><!--
+				--><li><a href="./home.html"><i class="icon-globe"></i></a></li><!--
+				--><li><a href="./info.html"><i class="icon-bell-circle"></i></a></li><!--
+				--><li class="on"><a href="./collection.html"><i class="icon-book-circle"></i></a></li>
+			</ul>
+		</nav>
+	</div>
+</footer>
+
+</div><!-- .containerInner -->
+</div><!-- #container -->
+
+<div id="loading">
+	<img class="loadingImage" src="assets/images/loading.gif" />
+</div>
+
+<script type="text/javascript" src="./assets/js/script.js"></script>
+<script type="text/javascript" src="./assets/js/d3.min.js"></script>
+<script type="text/javascript" src="./assets/js/topojson.js"></script>
+<script type="text/javascript" src="./assets/js/umania-map.js"></script>
+</body>
+</html>
