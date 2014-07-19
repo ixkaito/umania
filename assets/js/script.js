@@ -22,8 +22,6 @@ var rKey = database[rNum][0],
 	rId = database[rNum][1],
 	rName = database[rNum][2];
 
-console.log(storage);
-
 $(function(){
 
 	setTimeout(function(){
@@ -53,18 +51,22 @@ $(function(){
 	var filename = url.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
 	if(filename === 'info'){
-		setLocalStorage(rKey, rId, rName, rComp);
 		rValue = JSON.parse(storage.getItem(rKey));
-		console.log(rComp);
-		console.log(rValue[2]);
+		console.log(rValue);
+		var sumComp;
 		if(rValue){
-			// rComp = rValue[2] + rComp;
-			rComp = rComp > 100 ? 100 : rComp;
+			console.log(rValue[2]);
+			console.log(rComp);
+			sumComp = rValue[2] + rComp;
+			sumComp = sumComp > 100 ? 100 : sumComp;
+		}else{
+			sumComp = rComp;
 		}
-		console.log(rComp);
-		var _rS = rComp >= 100 ? '' : '_s';
+		var _rS = sumComp >= 100 ? '' : '_s';
 		var encountImage = '<p class="umaImage"><img src="./assets/images/uma_' + rId + _rS + '.png" alt=""></p>';
 		$('#encount').append(encountImage);
+
+		setLocalStorage(rKey, rId, rName, rComp);
 	}
 
 	if(filename === 'collection'){
