@@ -109,7 +109,7 @@ a{
 }
 
 #footer{
-	position: absolute;
+	position: fixed;
 	// border-top: 4px solid $gray_40;
 	background: $gray_90;
 	left: 0;
@@ -175,6 +175,7 @@ a{
 #main{
 	overflow: hidden;
 	width: 100%;
+	padding-bottom: 50px;
 }
 
 #start{
@@ -205,7 +206,7 @@ a{
 #mapContainer{
 	width: 100%;
 	text-align: center;
-	position: absolute;
+	position: fixed;
 	bottom: 48px;
 
 	#map{
@@ -217,21 +218,37 @@ a{
 }
 
 
-#uma{
-	margin-top: 100px;
+.encount{
 	text-align: center;
+
+	.umaImage{
+		margin: 20px auto;
+		width: 280px;
+		height: 280px;
+		@include border-radius(280px);
+		background: $gray_40;
+	}
+
+	img{
+		max-width: 100%;
+	}
 }
 
 #collection{
 
-	margin-top: 50px;
-
 	ul{
+		overflow: hidden;
+		width: 296px;
+		margin: 0 auto;
 
 		li{
 
 			float: left;
-			width: 25%;
+			width: 64px;
+			height: 64px;
+			@include border-radius(64px);
+			background: $gray_40;
+			margin: 5px;
 
 			img{
 				max-width: 100%
