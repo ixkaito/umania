@@ -2,7 +2,7 @@
 http_path = "/"
 preferred_syntax = :scss
 css_dir = "assets/css"
-sass_dir = "assets/_sass"
+sass_dir = "assets/_scss"
 images_dir = "assets/images"
 javascripts_dir = "assets/js"
 # relative_assets = true
