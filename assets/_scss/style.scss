@@ -256,3 +256,77 @@ a{
 		}
 	}
 }
+
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+	background-image: url('../images/fancybox_sprite_umania.png');
+}
+
+.fancybox-skin {
+	// position: relative;
+	background: $gray_40;
+	// color: #444;
+	// text-shadow: none;
+	@include border-radius(280px);
+}
+
+.fancybox-close {
+	position: fixed;
+	top: auto;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -18px;
+	// width: 36px;
+	// height: 36px;
+	// cursor: pointer;
+	// z-index: 8040;
+}
+
+.fancybox-nav {
+	position: fixed;
+	height: 36px;
+	width: 36px;
+    top: auto;
+    bottom: 5px;
+}
+
+.fancybox-prev {
+	left: auto;
+	right: 50%;
+	margin-right: 65px;
+}
+
+.fancybox-next {
+	right: auto;
+	left: 50%;
+	margin-left: 65px;
+}
+
+.fancybox-nav span {
+    // cursor: pointer;
+    // height: 34px;
+    // margin-top: -18px;
+    // position: fixed;
+    // height: 36px;
+    // width: 36px;
+    visibility: visible;
+    // width: 36px;
+    // z-index: 8040;
+}
+
+.fancybox-prev span {
+	left: auto;
+}
+
+.fancybox-next span {
+	right: auto;
+}
+
+/*Retina graphics!*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	   only screen and (min--moz-device-pixel-ratio: 1.5),
+	   only screen and (min-device-pixel-ratio: 1.5){
+
+	#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+		background-image: url('../images/fancybox_sprite_umania@2x.png');
+	}
+}

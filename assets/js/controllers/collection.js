@@ -16,11 +16,25 @@ angular.module('umania')
 			var _value = JSON.parse(storage.getItem(_key));
 			var _id = _value[0];
 			var _name = _value[1];
-			var _completion = _value[2];
+			var _text = _value[2];
+			var _completion = _value[3];
 			var _s = _completion >= 100 ? '' : '_s';
 
 			$scope.data.push({
 				imageUrl: 'assets/images/uma_' + _id + _s + '.png'
 			});
 		}
+
+		$(".fancybox").fancybox({
+			padding:   0,
+			maxWidth:  280,
+			maxHeight: 280,
+			helpers: {
+				overlay: {
+					css: {
+						'background' : 'rgba(0, 0, 0, 0.85)'
+					}
+				}
+			}
+		});
 	});

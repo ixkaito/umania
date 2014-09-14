@@ -4,7 +4,7 @@
 <div id="collection">
 	<ul>
 		<li ng-repeat="cryptid in data">
-			<img ng-src="{{cryptid.imageUrl}}"/>
+			<a href="{{cryptid.imageUrl}}" rel="uma" class="fancybox"><img ng-src="{{cryptid.imageUrl}}"/></a>
 		</li>
 	</ul>
 </div>
