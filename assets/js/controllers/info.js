@@ -70,4 +70,18 @@ angular.module('umania')
 			completion = '';
 			value = [];
 		}
+
+		function success(pos) {
+			var crd = pos.coords;
+
+			$('#latitude').text(crd.latitude);
+			$('#longitude').text(crd.longitude);
+		}
+
+		function error(err) {
+			console.warn('ERROR(' + err.code + '): ' + err.message);
+		}
+
+		navigator.geolocation.getCurrentPosition(success, error);
+
 	});
