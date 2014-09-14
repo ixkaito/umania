@@ -9,6 +9,6 @@ angular.module('umania')
   })
   .controller('SplashController', function($state, $timeout) {
     $timeout(function() {
-      $state.go('loading');
+      $state.go('home');
     }, 1000);
   });

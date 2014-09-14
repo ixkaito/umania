@@ -12,7 +12,8 @@
 <body>
 <div id="container">
 <div class="containerInner">
-	<div ui-view></div>
+	<div ui-view ng-show="!loading"></div>
+	<div id="loading" ng-show="loading"><img class="loadingImage" src="assets/images/loading.gif" /></div>
 </div><!-- .containerInner -->
 </div><!-- #container -->
 <script type="text/javascript" src="./assets/js/lib/angular.min.js"></script>
@@ -21,7 +22,6 @@
 <script type="text/javascript" src="./assets/js/lib/topojson.js"></script>
 <script type="text/javascript" src="./assets/js/umania.js"></script>
 <script type="text/javascript" src="./assets/js/controllers/splash.js"></script>
-<script type="text/javascript" src="./assets/js/controllers/loading.js"></script>
 <script type="text/javascript" src="./assets/js/controllers/home.js"></script>
 <script type="text/javascript" src="./assets/js/controllers/info.js"></script>
 <script type="text/javascript" src="./assets/js/controllers/collection.js"></script>

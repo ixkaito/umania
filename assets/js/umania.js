@@ -15,4 +15,13 @@ angular.module('umania', ['ui.router'])
 		$urlRouterProvider.otherwise('/splash');
 	})
 	.run(function($rootScope) {
+		$rootScope.loading = false;
+
+		$rootScope.$on('$stateChangeStart', function() {
+			$rootScope.loading = true;
+		});
+
+		$rootScope.$on('$viewContentLoaded', function() {
+			$rootScope.loading = false;
+		});
 	});
