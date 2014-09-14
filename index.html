@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" ng-app="umania">
 <head>
 	<meta charset="UTF-8">
 	<title>Umania</title>
 	<link rel="stylesheet" href="./assets/css/reset.css" />
 	<link rel="stylesheet" href="./assets/css/style.css" />
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript">window.jQuery || document.write('<script src="./assets/js/jquery-1.10.2.min.js"><\/script>')</script>
+	<script type="text/javascript">window.jQuery || document.write('<script src="./assets/js/lib/jquery-1.10.2.min.js"><\/script>')</script>
 	<meta name="viewport" content="width=320, initial-scale=1" />
 </head>
 <body>
 <div id="container">
 <div class="containerInner">
-
-<main id="main">
-
-<div id="start">
-	<p class="logo"><img src="./assets/images/umania-logo_280x64.png" alt="Umania"></p>
-</div>
-
-</main>
-
+	<div ui-view></div>
 </div><!-- .containerInner -->
 </div><!-- #container -->
-<script type="text/javascript" src="./assets/js/script.js"></script>
-<script type="text/javascript" src="./assets/js/d3.min.js"></script>
-<script type="text/javascript" src="./assets/js/topojson.js"></script>
-<script type="text/javascript" src="./assets/js/umania-map.js"></script>
+<script type="text/javascript" src="./assets/js/lib/angular.min.js"></script>
+<script type="text/javascript" src="./assets/js/lib/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="./assets/js/lib/d3.min.js"></script>
+<script type="text/javascript" src="./assets/js/lib/topojson.js"></script>
+<script type="text/javascript" src="./assets/js/umania.js"></script>
+<script type="text/javascript" src="./assets/js/controllers/splash.js"></script>
+<script type="text/javascript" src="./assets/js/controllers/loading.js"></script>
+<script type="text/javascript" src="./assets/js/controllers/home.js"></script>
+<script type="text/javascript" src="./assets/js/controllers/info.js"></script>
+<script type="text/javascript" src="./assets/js/controllers/collection.js"></script>
 </body>
 </html>

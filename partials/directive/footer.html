@@ -1,0 +1,21 @@
+<footer id="footer">
+	<div class="footer-inner">
+		<nav id="nav">
+			<ul>
+				<li ui-sref-active="on">
+					<a ui-sref="home"><i class="icon-globe"></i></a>
+				</li>
+				<li ui-sref-active="on" ng-class="{hasNew: infoCount}">
+					<a ui-sref="info">
+						<i class="icon-bell-circle">
+							<i class="infoNum">{{infoCount}}</i>
+						</i>
+					</a>
+				</li>
+				<li ui-sref-active="on">
+					<a ui-sref="collection"><i class="icon-book-circle"></i></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</footer>
