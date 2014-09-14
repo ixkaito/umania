@@ -19,7 +19,7 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
 (function(my) {
 	my.__type__ = 'gdocs';
 
-	var Deferred = _.isUndefined(this.jQuery) ? _.Deferred : jQuery.Deferred;
+	var Deferred = jQuery.Deferred;
 
 	// Fetch data from a Google Docs spreadsheet.
 	//

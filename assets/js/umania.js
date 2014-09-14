@@ -17,7 +17,7 @@ angular.module('umania', ['ui.router'])
 	.config(function($compileProvider) {
 		$compileProvider.imgSrcSanitizationWhitelist(/^.*/);
 	})
-	.run(function($state, $rootScope, $window, alarmInterval) {
+	.run(function($state, $rootScope, $window, Master, Info, alarmInterval) {
 		$rootScope.alarms = [];
 		$rootScope.loading = false;
 
@@ -32,9 +32,10 @@ angular.module('umania', ['ui.router'])
 		if ($window.navigator.mozAlarms) {
 			setAlarm();
 
-			$window.navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
+			$window.navigator.mozSetMessageHandler('alarm', function (mozAlarm) {
 				$rootScope.$apply(function() {
-					$rootScope.alarms.push({});
+					var master = Master.all();
+					Info.enqueue((Math.random() * master.length).toFixed(), (Math.random() * 100).toFixed());
 				});
 
 				var notification = new Notification('Umania', {

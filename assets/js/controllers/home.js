@@ -11,30 +11,10 @@ angular.module('umania')
 			.state('home', {
 				controller: 'HomeController',
 				resolve: {
-					cryptids: function($q) {
+					cryptids: function($q, loaddata) {
 						var deferred = $q.defer();
-						d3.csv('cryptids.csv', function(d) {
-							return {
-								lat: +d.lat,
-								lon: +d.lon,
-								category: gencat(),
-								popularity: Math.random()
-							};
-
-							function gencat() {
-								var v = Math.random();
-								if (v < 0.25) {
-									return AQUATIC;
-								} else if (v < 0.5) {
-									return ANTHROPOID;
-								} else if (v < 0.75) {
-									return MAMMALS;
-								} else {
-									return REPTILES;
-								}
-							}
-						}, function(cryptids) {
-							deferred.resolve(cryptids);
+						loaddata(function(result) {
+							deferred.resolve(result);
 						});
 						return deferred.promise;
 					},

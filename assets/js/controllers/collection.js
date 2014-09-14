@@ -7,20 +7,14 @@ angular.module('umania')
 				url: '/collection'
 			});
 	})
-	.controller('CollectionController', function($scope) {
-		var storage = localStorage;
-		$scope.data = [];
-
-		for (var i = 0; i < storage.length; i++) {
-			var _key = storage.key(i);
-			var _value = JSON.parse(storage.getItem(_key));
-			var _id = _value[0];
-			var _name = _value[1];
-			var _completion = _value[2];
-			var _s = _completion >= 100 ? '' : '_s';
-
-			$scope.data.push({
+	.controller('CollectionController', function($scope, Master, Collection) {
+		var master = Master.all();
+		var collection = Collection.all();
+		$scope.data = Object.keys(collection).map(function(key) {
+			var _s = collection[key] >= 100 ? '': '_s';
+			var _id = master[key].imageUrl;
+			return {
 				imageUrl: 'assets/images/uma_' + _id + _s + '.png'
-			});
-		}
+			};
+		});
 	});
