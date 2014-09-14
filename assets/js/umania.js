@@ -37,7 +37,7 @@ angular.module('umania', ['ui.router'])
 			$window.navigator.mozSetMessageHandler('alarm', function (mozAlarm) {
 				$rootScope.$apply(function() {
 					var master = Master.all();
-					Info.enqueue((Math.random() * master.length).toFixed(), (Math.random() * 100).toFixed());
+					Info.enqueue(Math.floor(Math.random() * master.length), Math.floor(Math.random() * 100));
 				});
 
 				var notification = new Notification('Umania', {
