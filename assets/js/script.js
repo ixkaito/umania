@@ -121,4 +121,34 @@ $(function(){
 
 	// removeAllStorage();
 
+	if ("geolocation" in navigator) {
+		alert('geolocation is available');
+	} else {
+		alert('geolocation IS NOT available');
+	}
+
+	// var options = {
+	// 	enableHighAccuracy: true,
+	// 	timeout: 5000,
+	// 	maximumAge: 0
+	// };
+
+	function success(pos) {
+		var crd = pos.coords;
+
+		$('#latitude').text(crd.latitude);
+		$('#longitude').text(crd.longitude);
+
+		// alert('Your current position is:');
+		// alert('Latitude : ' + crd.latitude);
+		// alert('Longitude: ' + crd.longitude);
+		// alert('More or less ' + crd.accuracy + ' meters.');
+	}
+
+	function error(err) {
+		console.warn('ERROR(' + err.code + '): ' + err.message);
+	}
+
+	navigator.geolocation.getCurrentPosition(success, error);
+
 });
