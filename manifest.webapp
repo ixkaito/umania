@@ -1,8 +1,18 @@
 {
   "name": "Umania",
+	"origin": "app://umania.com",
   "launch_path": "/index.html",
   "icons": {
     "128": "/assets/images/icon-128.png"
   },
-  "version": "1.0"
+  "version": "1.0",
+	"permissions": {
+    "alarms": {},
+		"desktop-notification": {}
+  },
+	"messages": [
+		{
+			"alarm": "/index.html"
+		}
+	]
 }
