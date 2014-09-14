@@ -27,6 +27,7 @@ angular.module('umania')
 
 		$(".fancybox").fancybox({
 			padding:   0,
+			margin:    [20, 20, 70, 20],
 			maxWidth:  280,
 			maxHeight: 280,
 			helpers: {
