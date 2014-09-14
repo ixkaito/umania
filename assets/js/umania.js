@@ -18,8 +18,10 @@ angular.module('umania', ['ui.router'])
 		$compileProvider.imgSrcSanitizationWhitelist(/^.*/);
 	})
 	.run(function($state, $rootScope, $window, Master, Info, alarmInterval) {
-		$rootScope.alarms = [];
 		$rootScope.loading = false;
+		$rootScope.infoCount = function() {
+			return Info.length();
+		};
 
 		$rootScope.$on('$stateChangeStart', function() {
 			$rootScope.loading = true;

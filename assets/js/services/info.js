@@ -1,6 +1,9 @@
 angular.module('umania')
 	.factory('Info', function($window) {
 		return {
+			length: function() {
+				return JSON.parse($window.localStorage.getItem('info') || '[]').length;
+			},
 			enqueue: function(key, completion) {
 				var info = JSON.parse($window.localStorage.getItem('info') || '[]');
 				info.push({
