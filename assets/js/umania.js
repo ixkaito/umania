@@ -14,6 +14,9 @@ angular.module('umania', ['ui.router'])
 	.config(function($urlRouterProvider) {
 		$urlRouterProvider.otherwise('/splash');
 	})
+	.config(function($compileProvider) {
+		$compileProvider.imgSrcSanitizationWhitelist(/^.*/);
+	})
 	.run(function($rootScope) {
 		$rootScope.loading = false;
 
