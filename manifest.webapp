@@ -1,8 +1,14 @@
 {
   "name": "Umania",
+  "description": "Meet and collect UMAs in the world",
   "launch_path": "/index.html",
   "icons": {
     "128": "/assets/images/icon-128.png"
   },
-  "version": "1.0"
+  "version": "1.0",
+  "permissions": {
+    "geolocation": {
+      "description": "Required to get the geolocation"
+    }
+  }
 }
