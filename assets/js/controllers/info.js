@@ -26,6 +26,8 @@ angular.module('umania')
 			});
 	})
 	.controller('InfoController', function($scope) {
+		var cryptid = $scope.alarms.shift();
+
 		var storage = localStorage;
 		var rNum = Math.floor(Math.random() * database.length);
 		var rComp = Math.floor(Math.random() * 100);

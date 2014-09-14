@@ -17,7 +17,8 @@ angular.module('umania', ['ui.router'])
 	.config(function($compileProvider) {
 		$compileProvider.imgSrcSanitizationWhitelist(/^.*/);
 	})
-	.run(function($rootScope, $window) {
+	.run(function($state, $rootScope, $window, alarmInterval) {
+		$rootScope.alarms = [];
 		$rootScope.loading = false;
 
 		$rootScope.$on('$stateChangeStart', function() {
@@ -29,21 +30,32 @@ angular.module('umania', ['ui.router'])
 		});
 
 		if ($window.navigator.mozAlarms) {
-			var req;
-			var alarmDate = new Date(Date.now() + 10000); // 10秒後
-			req = $window.navigator.mozAlarms.add(alarmDate, 'honorTimezone', {});
+			setAlarm();
 
 			$window.navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
+				$rootScope.$apply(function() {
+					$rootScope.alarms.push({});
+				});
+
 				var notification = new Notification('Umania', {
 					body: 'UMAに遭遇しました',
 					icon: 'app://53f82159-2c63-ce47-b284-f4302a984232/assets/images/icon-128.png'
 				});
 				notification.onclick = function() {
 					 $window.navigator.mozApps.getSelf().onsuccess = function(evt) {
+						 notification.close();
 						 var app = evt.target.result;
 						 app.launch();
+						 $state.go('info');
 					 };
 				};
+
+				setAlarm();
 			});
+		}
+
+		function setAlarm() {
+			var alarmDate = new Date(Date.now() + alarmInterval); // 60秒後
+			$window.navigator.mozAlarms.add(alarmDate, 'honorTimezone', {});
 		}
 	});

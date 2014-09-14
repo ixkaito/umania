@@ -51,8 +51,6 @@ angular.module('umania')
 			});
 	})
 	.controller('HomeController', function($scope, cryptids, data) {
-		$scope.infoCount = 2;
-
 		d3.select('#map')
 			.call(drawMap({
 				cryptids: cryptids,
