@@ -39,10 +39,10 @@ angular.module('umania', ['ui.router'])
 			$window.navigator.mozSetMessageHandler('alarm', function (mozAlarm) {
 				console.log(notificationCount);
 
-				navigator.geolocation.getCurrentPosition(function(pos) {
-					console.log(arguments, this);
+				//navigator.geolocation.getCurrentPosition(function(pos) {
+				//	console.log(arguments, this);
 					$rootScope.$apply(function() {
-						var master = Master.query(pos.coords.latitude, pos.coords.longitude);
+						var master = Master.all();
 						Info.enqueue(Math.floor(Math.random() * master.length), Math.floor(Math.random() * 100));
 					});
 
@@ -64,9 +64,9 @@ angular.module('umania', ['ui.router'])
 						};
 						notificationCount += 1;
 					}
-				}, function() {
-					console.log('error', arguments, this);
-				});
+				//}, function() {
+				//	console.log('error', arguments, this);
+				//});
 
 				setAlarm();
 			});
