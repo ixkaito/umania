@@ -33,7 +33,6 @@ angular.module('umania')
 				}
 			},
 			afterShow: function() {
-				console.log(this, arguments);
 				var key = $.fancybox.current.index;
 				console.log($scope.data[key].description);
 			}
