@@ -14,6 +14,8 @@ angular.module('umania')
 			var _s = collection[key] >= 100 ? '': '_s';
 			var _id = master[key].imageUrl;
 			return {
+				name: master[key].name,
+				description: master[key].description,
 				imageUrl: 'assets/images/uma_' + _id + _s + '.png'
 			};
 		});
@@ -29,6 +31,11 @@ angular.module('umania')
 						'background' : 'rgba(0, 0, 0, 0.85)'
 					}
 				}
+			},
+			afterShow: function() {
+				console.log(this, arguments);
+				var key = $.fancybox.current.index;
+				console.log($scope.data[key].description);
 			}
 		});
 	});

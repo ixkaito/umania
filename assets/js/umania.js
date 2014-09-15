@@ -16,6 +16,7 @@ angular.module('umania', ['ui.router'])
 	})
 	.config(function($compileProvider) {
 		$compileProvider.imgSrcSanitizationWhitelist(/^.*/);
+		$compileProvider.aHrefSanitizationWhitelist(/^.*/);
 	})
 	.run(function($state, $rootScope, $window, Master, Info, alarmInterval) {
 		$rootScope.loading = false;
