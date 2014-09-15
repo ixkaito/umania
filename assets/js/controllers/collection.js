@@ -17,4 +17,18 @@ angular.module('umania')
 				imageUrl: 'assets/images/uma_' + _id + _s + '.png'
 			};
 		});
+
+		$(".fancybox").fancybox({
+			padding:   0,
+			margin:    [20, 20, 70, 20],
+			maxWidth:  280,
+			maxHeight: 280,
+			helpers: {
+				overlay: {
+					css: {
+						'background' : 'rgba(0, 0, 0, 0.85)'
+					}
+				}
+			}
+		});
 	});

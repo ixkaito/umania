@@ -21,7 +21,6 @@ angular.module('umania')
 		var encountImage = '<p class="umaImage"><img src="./assets/images/uma_' + rId + _rS + '.png" alt=""></p>';
 		$('#encount').append(encountImage);
 
-
 		function success(pos) {
 			var crd = pos.coords;
 
