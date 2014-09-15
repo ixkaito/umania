@@ -54,7 +54,7 @@ angular.module('umania')
 				.domain(d3.extent(cryptids, function(d) {
 					return d.popularity;
 				}))
-				.range([10, 40]);
+				.range([25, 40]);
 			var scaleX = width / 944;
 			var scaleY = height / 944;
 

@@ -38,33 +38,52 @@ angular.module('umania', ['ui.router'])
 
 			$window.navigator.mozSetMessageHandler('alarm', function (mozAlarm) {
 				console.log(notificationCount);
-				$rootScope.$apply(function() {
-					var master = Master.all();
-					Info.enqueue(Math.floor(Math.random() * master.length), Math.floor(Math.random() * 100));
-				});
 
-				if (notificationCount < notificationLimit) {
-					var notification = new Notification('Umania', {
-						body: 'UMAに遭遇しました',
-						icon: 'app://53f82159-2c63-ce47-b284-f4302a984232/assets/images/icon-128.png'
+				navigator.geolocation.getCurrentPosition(function(pos) {
+					console.log(arguments, this);
+					$rootScope.$apply(function() {
+						var master = Master.query(pos.coords.latitude, pos.coords.longitude);
+						Info.enqueue(Math.floor(Math.random() * master.length), Math.floor(Math.random() * 100));
 					});
-					notification.onclick = function() {
-						 $window.navigator.mozApps.getSelf().onsuccess = function(evt) {
-							 notification.close();
-							 var app = evt.target.result;
-							 app.launch();
-							 $state.go('info');
-						 };
-					};
-					notification.onclose = function() {
-						notificationCount = Math.max(0, notificationCount - 1);
-					};
-					notificationCount += 1;
-				}
+
+					if (notificationCount < notificationLimit) {
+						var notification = new Notification('Umania', {
+							body: 'UMAに遭遇しました',
+							icon: 'app://53f82159-2c63-ce47-b284-f4302a984232/assets/images/icon-128.png'
+						});
+						notification.onclick = function() {
+							 $window.navigator.mozApps.getSelf().onsuccess = function(evt) {
+								 notification.close();
+								 var app = evt.target.result;
+								 app.launch();
+								 $state.go('info');
+							 };
+						};
+						notification.onclose = function() {
+							notificationCount = Math.max(0, notificationCount - 1);
+						};
+						notificationCount += 1;
+					}
+				}, function() {
+					console.log('error', arguments, this);
+				});
 
 				setAlarm();
 			});
 		}
+
+		function success(pos) {
+			var crd = pos.coords;
+
+			$('#latitude').text(crd.latitude);
+			$('#longitude').text(crd.longitude);
+		}
+
+		function error(err) {
+			console.warn('ERROR(' + err.code + '): ' + err.message);
+		}
+
+		navigator.geolocation.getCurrentPosition(function() {}, function() {});
 
 		function setAlarm() {
 			$window.navigator.mozAlarms.getAll().onsuccess = function() {
