@@ -69,10 +69,11 @@ angular.module('umania', ['ui.router'])
 		function setAlarm() {
 			$window.navigator.mozAlarms.getAll().onsuccess = function() {
 				console.log('alarm count', this.result.length);
-				if (this.result.length === 0) {
-					var alarmDate = new Date(Date.now() + alarmInterval); // 60秒後
-					$window.navigator.mozAlarms.add(alarmDate, 'honorTimezone', {});
-				}
+				this.result.forEach(function(alarm) {
+					$window.navigator.mozAlarms.remove(alarm.id);
+				});
+				var alarmDate = new Date(Date.now() + alarmInterval); // 60秒後
+				$window.navigator.mozAlarms.add(alarmDate, 'honorTimezone', {});
 			};
 		}
 	});
