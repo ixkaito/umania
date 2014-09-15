@@ -1,21 +1,25 @@
 {
-  "name": "Umania",
-  "description": "Meet and collect UMAs in the world",
-  "launch_path": "/index.html",
-  "icons": {
-    "128": "/assets/images/icon-128.png"
-  },
-  "version": "1.0",
-	"permissions": {
-    "alarms": {},
-		"desktop-notification": {},
-    "geolocation": {
-      "description": "Required to get the geolocation"
+    "name": "Umania",
+    "description": "Meet and collect UMAs in the world",
+    "launch_path": "/index.html",
+    "icons": {
+        "128": "/assets/images/icon-128.png"
+    },
+    "version": "1.0",
+    "permissions": {
+        "alarms": {},
+        "desktop-notification": {},
+        "geolocation": {
+            "description": "Required to get the geolocation"
+        }
+    },
+    "messages": [
+        {
+            "alarm": "/index.html"
+        }
+    ],
+    "developer": {
+        "name": "Umania Team",
+        "url": "http://github.com/ixkaito/umania"
     }
-  },
-	"messages": [
-		{
-			"alarm": "/index.html"
-		}
-	]
 }
